@@ -1,2 +1,2 @@
 // action creator
-export const ping = () => ({ type: "ping" });
+export const ping = () => ({ type: "PING" });
