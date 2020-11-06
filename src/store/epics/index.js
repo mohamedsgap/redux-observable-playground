@@ -1,2 +1,7 @@
+import "rxjs";
+import { ofType } from "redux-observable";
+import { delay } from "rxjs/operators";
+import { mapTo } from "rxjs/operators";
+
 export const pingEpic = (action$) =>
-  action$.ofType("PING").delay(5000).mapTo({ type: "PONG" });
+  action$.pipe(ofType("PING"), delay(2000), mapTo({ type: "PONG" }));
