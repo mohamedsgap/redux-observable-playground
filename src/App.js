@@ -1,22 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from "react-redux";
+import { ping } from "./store/actions";
+import "./App.css";
 
 function App() {
+  const isPinging = useSelector((state) => state.isPinging);
+  const dispatch = useDispatch();
+  console.log("isPinging", isPinging);
+  const handleClick = () => dispatch(ping());
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>isPinging: {isPinging.toString()} </h1>
+        <button onClick={handleClick}>Start Ping</button>
       </header>
     </div>
   );
