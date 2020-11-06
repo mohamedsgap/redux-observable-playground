@@ -1,10 +1,13 @@
 import { createStore, applyMiddleware } from "redux";
 import { createEpicMiddleware } from "redux-observable";
-import { pinngBongReducer } from "./reducers";
+import { pingBongReducer } from "./reducers";
 import { pingEpic } from "./epics";
+import "rxjs";
 
-const epicMiddleware = createEpicMiddleware(pingEpic);
+const epicMiddleware = createEpicMiddleware();
 
-const store = createStore(pinngBongReducer, applyMiddleware(epicMiddleware));
+const store = createStore(pingBongReducer, applyMiddleware(epicMiddleware));
+
+epicMiddleware.run(pingEpic);
 
 export default store;
